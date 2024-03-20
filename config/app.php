@@ -69,6 +69,7 @@ return [
     'providers' => [
         App\Providers\AppServiceProvider::class,
         App\Providers\ScraperServiceProvider::class,
+        App\Providers\FlashcardStorageServiceProvider::class,
     ],
 
 ];

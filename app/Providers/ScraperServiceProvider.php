@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\ScrapeableInterface;
-use App\Services\Scrapers\FileScraper;
+use App\Actions\Scrapers\FileScraper;
 
 class ScraperServiceProvider extends ServiceProvider
 {

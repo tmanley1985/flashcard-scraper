@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Scrapers;
+namespace App\Actions\Scrapers;
 
 use App\Contracts\ScrapeableInterface;
 
