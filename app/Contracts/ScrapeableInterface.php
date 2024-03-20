@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 
 interface ScrapeableInterface {
-    public function scrape();
+    public function execute(string $source);
 }

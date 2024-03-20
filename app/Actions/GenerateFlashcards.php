@@ -15,8 +15,10 @@ final class GenerateFlashcards
         $this->storeFlashcards = $storeFlashcards;
     }
 
-    public function execute(string $source)
+    public function execute(string $source, string $storageDestination)
     {
-        dd($source);
+        $flashcards = $this->scraper->execute($source);
+
+        $this->storeFlashcards->execute(flashcards: $flashcards, storageDestination: $storageDestination);
     }
 }

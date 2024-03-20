@@ -6,8 +6,8 @@ use App\Contracts\FlashcardStorageInterface;
 
 final class StoreFlashcards implements FlashcardStorageInterface
 {
-    public function execute(array $flashcards)
+    public function execute(array $flashcards, string $storageDestination)
     {
-        dd('Storing the flashcards');
+        dd($storageDestination);
     }
 }

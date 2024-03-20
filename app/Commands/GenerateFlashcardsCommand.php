@@ -14,7 +14,10 @@ class GenerateFlashcardsCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'generate:flashcards {source : The source input, such as a file path or S3 bucket where the flashcard content is stored}';
+    protected $signature = 'generate:flashcards
+                        {--source= : The source from which to generate flashcards}
+                        {--storage-dir= : The directory where flashcards should be stored}';
+
 
     /**
      * The description of the command.
@@ -38,20 +41,21 @@ class GenerateFlashcardsCommand extends Command
      */
     public function handle()
     {
-        // Use ScrapeableInterface to get the contents of the file.
+        $source = $this->option('source');
+        $storageDir = $this->option('storage-dir');
+    
+        // We have to manually validate these optional params, but since source and storage-dir
+        // are positional, I don't want someone getting confused and swap them accidentally.
+        if (is_null($source) || is_null($storageDir)) {
+            $this->error('The --source and --storage-dir options are required.');
+            return;
+        }
 
-        // Create a new file per file you find with the questions/answers
-        // this could be a php file that has an associative array in it.
-        // It's possible you may allow them to specify a certain file type and
-        // have a driver for that.
+        // TODO: This should probably be a role that knows how to store flashcards
+        // anywhere including S3, a database, etc.
+        $storageFile = $storageDir . DIRECTORY_SEPARATOR . 'flashcards.php';
 
-        // Then work on a way to show those questions/answers
-
-        $source = $this->argument('source');
-        
-        //TODO: Create a strategy for this.
-
-        $this->generateFlashcards->execute($source);
+        $this->generateFlashcards->execute(source: $source, storageDestination: $storageFile);
         
     }
 

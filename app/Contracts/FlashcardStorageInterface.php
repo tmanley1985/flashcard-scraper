@@ -4,5 +4,5 @@ namespace App\Contracts;
 
 interface FlashcardStorageInterface
 {
-    public function execute(array $flashcards);
+    public function execute(array $flashcards, string $storageDestination);
 }

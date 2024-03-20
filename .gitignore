@@ -3,3 +3,6 @@
 /.vscode
 /.vagrant
 .phpunit.result.cache
+
+# This is the local storage directory for flashcards for testing purposes
+.local_flashcards/
